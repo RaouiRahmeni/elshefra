@@ -4,23 +4,63 @@
   --background: #ffffff;
   --foreground: #171717;
 }
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+.font-merienda {
+  font-family: var(--font-merienda), sans-serif;
 }
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@keyframes smoothWave {
+  0%,
+  100% {
+    transform: translateY(0) skewY(0deg);
+  }
+  25% {
+    transform: translateY(-3px) skewY(2deg);
+  }
+  75% {
+    transform: translateY(3px) skewY(-2deg);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.wavy-text {
+  display: inline-block;
+  animation: smoothWave 2s ease-in-out infinite;
+}
+@keyframes wave {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+.mouse-scroll-animation {
+  width: 24px;
+  height: 40px;
+  border: 2px solid #000000; /* Adjust color */
+  border-radius: 12px;
+  position: relative;
+}
+
+.mouse-scroll-animation::before {
+  content: "";
+  position: absolute;
+  top: 6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 8px;
+  background: #000000; /* Adjust color */
+  border-radius: 2px;
+  animation: scrollDown 1.5s infinite;
+}
+
+@keyframes scrollDown {
+  0% {
+    opacity: 1;
+    transform: translateY(0) translateX(-50%);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(16px) translateX(-50%);
+  }
 }

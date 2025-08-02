@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+// app/layout.tsx (or pages/_app.tsx)
+import { Inter, Merienda } from "next/font/google";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+// Load Inter as the default font
+const inter = Inter({ subsets: ["latin"] });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+// Load Merienda for specific titles (only when needed)
+const merienda = Merienda({
   subsets: ["latin"],
+  weight: ["400", "700"], // Adjust weights as needed
+  variable: "--font-merienda", // Optional: CSS variable
 });
 
 export const metadata: Metadata = {
@@ -23,12 +24,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
-      </body>
+    <html className={`${inter.className} ${merienda.variable}`} lang="en">
+      <body>{children}</body>
     </html>
   );
 }
