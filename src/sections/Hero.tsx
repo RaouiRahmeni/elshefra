@@ -35,7 +35,7 @@ const Hero = () => {
           </p>
         </div>
       </div>
-      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2">
+      <div className="absolute bottom-20 left-1/2 transform -translate-x-1/2">
         <div className="mouse-scroll-animation"></div>
       </div>
     </div>
